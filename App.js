@@ -8,21 +8,47 @@
 
 import React, {Component} from 'react';
 import {SafeAreaView, View, Text, StatusBar} from 'react-native';
+import NfcReader from './src/NfcReader';
 
 class App extends Component {
   state = {
-    message: null,
+    scriptRunner: '',
   };
 
-  componentDidMount() {
-    const funcBody = 'return sendAPDU()';
-    const f = new Function('sendAPDU', funcBody);
-    let r = f(this.transmit);
-    this.setState({message: r});
+  async getScript() {
+    const script = 'let r = await sendAPDU("00aa0000");\
+    return r;';
+    return script;
   }
 
-  transmit() {
-    return 6 + 5;
+  async componentDidMount() {
+    global.nfcReader = new NfcReader();
+    global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
+
+    const script = await this.getScript();
+    const AsyncFunction = new Function(
+      `return Object.getPrototypeOf(async function(){}).constructor`,
+    )();
+    const scriptRunner = new AsyncFunction(
+      'sendAPDU',
+      'getHttp',
+      'pinPad',
+      'messageYesNo',
+      'message',
+      script,
+    );
+    this.setState({scriptRunner});
+  }
+
+  async cardDetected() {
+    this.state
+      .scriptRunner(global.nfcReader.transmit)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -31,11 +57,7 @@ class App extends Component {
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
           <View>
-            <Text>
-              {this.state.message !== null
-                ? this.state.message
-                : 'Please wait...'}
-            </Text>
+            <Text></Text>
           </View>
         </SafeAreaView>
       </>
