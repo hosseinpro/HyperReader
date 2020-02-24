@@ -95966,6 +95966,8 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _NfcReader = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "./src/NfcReader"));
 
+  var _PinModal = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[11], "./src/PinModal"));
+
   var _jsxFileName = "/Users/hossein/Code/MobileNFCReader/App.js";
 
   var App = function (_Component) {
@@ -95997,7 +95999,10 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                script = 'let r = await sendAPDU("00aa0000");\
+                script = '\
+    const pin = await pinPad("Salam",6);\
+    console.log(pin);\
+    let r = await sendAPDU("00aa0000");\
     return r;';
                 return _context.abrupt("return", script);
 
@@ -96043,7 +96048,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                this.state.scriptRunner(global.nfcReader.transmit).then(function (result) {
+                this.state.scriptRunner(global.nfcReader.transmit, null, global.pinModal.show.bind(global.pinModal)).then(function (result) {
                   console.log(result);
                 }).catch(function (error) {
                   console.log(error);
@@ -96063,22 +96068,30 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           barStyle: "dark-content",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 57
+            lineNumber: 66
+          }
+        }), _react.default.createElement(_PinModal.default, {
+          ref: function ref(pinModal) {
+            return global.pinModal = pinModal;
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 67
           }
         }), _react.default.createElement(_reactNative.SafeAreaView, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58
+            lineNumber: 68
           }
         }, _react.default.createElement(_reactNative.View, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 59
+            lineNumber: 69
           }
         }, _react.default.createElement(_reactNative.Text, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 60
+            lineNumber: 70
           }
         }))));
       }
@@ -96088,7 +96101,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _default = App;
   exports.default = _default;
-},447,[1,9,103,24,25,32,34,37,54,2,448],"App.js");
+},447,[1,9,103,24,25,32,34,37,54,2,448,450],"App.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -96148,6 +96161,755 @@ __d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
   "displayName": "MobileNFCReader"
 };
 },449,[],"app.json");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf3 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[7], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[8], "react-native");
+
+  var _reactNativePinView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[9], "react-native-pin-view"));
+
+  var _Colors = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "./Colors"));
+
+  var _jsxFileName = "/Users/hossein/Code/MobileNFCReader/src/PinModal.js";
+
+  var PinModal = function (_Component) {
+    (0, _inherits2.default)(PinModal, _Component);
+
+    function PinModal() {
+      var _getPrototypeOf2;
+
+      var _this;
+
+      (0, _classCallCheck2.default)(this, PinModal);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(PinModal)).call.apply(_getPrototypeOf2, [this].concat(args)));
+      _this.state = {
+        visible: false,
+        pinLength: 4,
+        onComplete: null,
+        onCancel: null
+      };
+      return _this;
+    }
+
+    (0, _createClass2.default)(PinModal, [{
+      key: "show",
+      value: function show() {
+        var _this2 = this;
+
+        var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var pinLength = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 4;
+        return new Promise(function (resolve, reject) {
+          _this2.setState({
+            visible: true,
+            message: message,
+            pinLength: pinLength,
+            onComplete: function onComplete(pin) {
+              resolve(pin);
+            },
+            onCancel: function onCancel() {
+              reject(new Error('Cancel'));
+            }
+          });
+        });
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this3 = this;
+
+        return _react.default.createElement(_reactNative.Modal, {
+          animationType: "slide",
+          transparent: false,
+          visible: this.state.visible,
+          onRequestClose: function onRequestClose() {},
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 32
+          }
+        }, _react.default.createElement(_reactNative.View, {
+          contentContainerStyle: {
+            flex: 1,
+            backgroundColor: _Colors.default.primary,
+            alignContent: 'center',
+            justifyContent: 'center'
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 37
+          }
+        }, _react.default.createElement(_reactNative.Text, {
+          style: {
+            fontSize: 25,
+            color: _Colors.default.primaryText,
+            alignSelf: 'center',
+            marginBottom: 20
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 44
+          }
+        }, this.state.message), _react.default.createElement(_reactNativePinView.default, {
+          onComplete: function onComplete(pin, clear) {
+            clear();
+
+            _this3.setState({
+              visible: false
+            });
+
+            _this3.state.onComplete(pin);
+          },
+          pinLength: this.state.pinLength,
+          buttonBgColor: _Colors.default.primaryText,
+          buttonTextColor: _Colors.default.secondary,
+          inputBgColor: _Colors.default.primaryText,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 53
+          }
+        }), _react.default.createElement(_reactNative.TouchableHighlight, {
+          transparent: true,
+          style: {
+            alignSelf: 'flex-end',
+            marginRight: 60
+          },
+          onPress: function onPress() {
+            _this3.setState({
+              visible: false
+            });
+
+            if (_this3.state.onCancel !== null) _this3.state.onCancel();
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 64
+          }
+        }, _react.default.createElement(_reactNative.Text, {
+          style: {
+            fontSize: 16,
+            color: _Colors.default.secondary
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 74
+          }
+        }, "Cancel"))));
+      }
+    }]);
+    return PinModal;
+  }(_react.Component);
+
+  exports.default = PinModal;
+},450,[1,9,24,25,32,34,37,54,2,451,453],"src/PinModal.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _extends2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/extends"));
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _assertThisInitialized2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/assertThisInitialized"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[9], "react-native");
+
+  var _KeyboardView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "./libs/parts/KeyboardView"));
+
+  var _InputView = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[11], "./libs/parts/InputView"));
+
+  var _styles = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[12], "./libs/parts/styles"));
+
+  var _propTypes = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[13], "prop-types"));
+
+  var _jsxFileName = "/Users/hossein/Code/MobileNFCReader/node_modules/react-native-pin-view/index.js";
+
+  var PinView = function (_React$Component) {
+    (0, _inherits2.default)(PinView, _React$Component);
+
+    function PinView(props) {
+      var _this;
+
+      (0, _classCallCheck2.default)(this, PinView);
+      _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(PinView).call(this, props));
+      _this.userInput = [];
+
+      _this.setDeleteButton = function (status) {
+        _reactNative.Animated.timing(_this.state.animatedDeleteButton, {
+          toValue: status ? 1 : 0,
+          duration: 100
+        }).start();
+
+        _this.setState({
+          animatedDeleteButtonOnPress: !status
+        });
+      };
+
+      _this.keyboardOnPress = function (val, returnType, pinLength, onComplete, onPress) {
+        if (val === _this.props.customButtonText) {
+          _this.props.onCustomButtonPress();
+        } else if (val === _this.props.deleteText) {
+          _this.userInput = _this.userInput.slice(0, -1);
+
+          _this.setState({
+            animatedInputIndex: _this.state.animatedInputIndex.slice(0, -1)
+          });
+
+          if (_this.userInput.length === 0) {
+            _this.setDeleteButton(false);
+          }
+        } else if (_this.userInput.length < pinLength) {
+          if (pinLength === _this.userInput.length + 1) {
+            _this.userInput = _this.userInput.concat(parseInt(val));
+
+            _this.setDeleteButton(true);
+
+            _this.setState({
+              animatedInputIndex: _this.state.animatedInputIndex.concat(_this.userInput.indexOf(parseInt(val)))
+            }, function () {
+              setTimeout(function () {
+                if (returnType === "string") {
+                  return onComplete(_this.userInput.join(""), _this.clear);
+                } else if (returnType === "array") {
+                  return onComplete(_this.userInput, _this.clear);
+                } else {
+                  console.log("Unkown return type!");
+                }
+              }, _this.props.delayBeforeOnComplete);
+            });
+          } else {
+            _this.userInput = _this.userInput.concat(parseInt(val));
+
+            _this.setDeleteButton(true);
+
+            _this.setState({
+              animatedInputIndex: _this.state.animatedInputIndex.concat(_this.userInput.indexOf(parseInt(val)))
+            });
+          }
+        }
+
+        if (onPress && typeof onPress === "function") {
+          onPress(_this.userInput, _this.clear, val);
+        }
+      };
+
+      _this.state = {
+        animatedInputIndex: (0, _extends2.default)([]),
+        animatedDeleteButton: new _reactNative.Animated.Value(0),
+        pinViewAnim: new _reactNative.Animated.Value(0),
+        animatedDeleteButtonOnPress: true
+      };
+      _this.keyboardOnPress = _this.keyboardOnPress.bind((0, _assertThisInitialized2.default)(_this));
+      _this.setDeleteButton = _this.setDeleteButton.bind((0, _assertThisInitialized2.default)(_this));
+      _this.clear = _this.clear.bind((0, _assertThisInitialized2.default)(_this));
+      return _this;
+    }
+
+    (0, _createClass2.default)(PinView, [{
+      key: "clear",
+      value: function clear() {
+        this.userInput = [];
+        this.setState({
+          animatedInputIndex: (0, _extends2.default)([]),
+          pinViewAnim: new _reactNative.Animated.Value(0)
+        });
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this$props = this.props,
+            pinLength = _this$props.pinLength,
+            showInputs = _this$props.showInputs,
+            inputTextStyle = _this$props.inputTextStyle,
+            keyboardViewStyle = _this$props.keyboardViewStyle,
+            keyboardViewTextStyle = _this$props.keyboardViewTextStyle,
+            inputViewStyle = _this$props.inputViewStyle,
+            buttonTextColor = _this$props.buttonTextColor,
+            returnType = _this$props.returnType,
+            buttonBgColor = _this$props.buttonBgColor,
+            inputBgColor = _this$props.inputBgColor,
+            onComplete = _this$props.onComplete,
+            disabled = _this$props.disabled,
+            inputActiveBgColor = _this$props.inputActiveBgColor,
+            inputBgOpacity = _this$props.inputBgOpacity,
+            deleteText = _this$props.deleteText,
+            customButtonText = _this$props.customButtonText,
+            onCustomButtonPress = _this$props.onCustomButtonPress,
+            keyboardContainerStyle = _this$props.keyboardContainerStyle,
+            onPress = _this$props.onPress,
+            buttonDeletePosition = _this$props.buttonDeletePosition,
+            buttonDeleteStyle = _this$props.buttonDeleteStyle,
+            buttonActiveOpacity = _this$props.buttonActiveOpacity;
+        return _react.default.createElement(_reactNative.View, {
+          pointerEvents: disabled ? "none" : undefined,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 115
+          }
+        }, _react.default.createElement(_InputView.default, {
+          inputViewStyle: inputViewStyle,
+          showInputs: showInputs,
+          inputTextStyle: inputTextStyle,
+          bgOpacity: inputBgOpacity,
+          inputtedValues: showInputs ? this.userInput : undefined,
+          pinLength: pinLength,
+          activeBgColor: inputActiveBgColor,
+          animatedInputIndex: this.state.animatedInputIndex,
+          pinViewAnim: this.state.pinViewAnim,
+          bgColor: inputBgColor,
+          styles: [_styles.default.passwordInputView, _styles.default.passwordInputViewItem, _styles.default.passwordInputViewItemActive],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 116
+          }
+        }), _react.default.createElement(_reactNative.View, {
+          style: [_styles.default.keyboardView, keyboardContainerStyle],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 129
+          }
+        }, _react.default.createElement(_KeyboardView.default, {
+          keyboardViewStyle: keyboardViewStyle,
+          keyboardViewTextStyle: keyboardViewTextStyle,
+          styles: [_styles.default.keyboardViewItem, _styles.default.keyboardViewItemText],
+          bgColor: buttonBgColor,
+          textColor: buttonTextColor,
+          animatedDeleteButton: this.state.animatedDeleteButton,
+          pinLength: pinLength,
+          deleteText: deleteText,
+          customButtonText: customButtonText,
+          onCustomButtonPress: onCustomButtonPress,
+          onComplete: onComplete,
+          animatedDeleteButtonOnPress: this.state.animatedDeleteButtonOnPress,
+          keyboardOnPress: this.keyboardOnPress,
+          returnType: returnType,
+          onPress: onPress,
+          buttonDeletePosition: buttonDeletePosition,
+          buttonDeleteStyle: buttonDeleteStyle,
+          buttonActiveOpacity: buttonActiveOpacity,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 130
+          }
+        })));
+      }
+    }]);
+    return PinView;
+  }(_react.default.Component);
+
+  PinView.defaultProps = {
+    deleteText: "DEL",
+    buttonBgColor: "#FFF",
+    buttonTextColor: "#333",
+    inputBgColor: "#333",
+    inputActiveBgColor: "#333",
+    returnType: "string",
+    inputBgOpacity: 0.1,
+    disabled: false,
+    clear: false,
+    delayBeforeOnComplete: 175,
+    inputTextStyle: undefined,
+    showInputs: false,
+    inputViewStyle: _reactNative.StyleSheet.create({}),
+    keyboardViewStyle: _reactNative.StyleSheet.create({}),
+    keyboardContainerStyle: _reactNative.StyleSheet.create({}),
+    onPress: undefined,
+    buttonDeletePosition: "left",
+    buttonDeleteStyle: _reactNative.StyleSheet.create({}),
+    buttonActiveOpacity: 0.9
+  };
+  PinView.propTypes = {
+    disabled: _propTypes.default.bool,
+    deleteText: _propTypes.default.any,
+    customButtonText: _propTypes.default.any,
+    onCustomButtonPress: _propTypes.default.func,
+    returnType: _propTypes.default.string,
+    buttonBgColor: _propTypes.default.string,
+    buttonTextColor: _propTypes.default.string,
+    inputBgColor: _propTypes.default.string,
+    inputActiveBgColor: _propTypes.default.string,
+    inputBgOpacity: _propTypes.default.number,
+    onComplete: _propTypes.default.func.isRequired,
+    pinLength: _propTypes.default.number.isRequired,
+    delayBeforeOnComplete: _propTypes.default.number,
+    clear: _propTypes.default.bool,
+    inputTextStyle: _reactNative.Text.propTypes.style,
+    showInputs: _propTypes.default.bool,
+    inputViewStyle: _reactNative.ViewPropTypes.style,
+    keyboardViewStyle: _reactNative.ViewPropTypes.style,
+    keyboardContainerStyle: _reactNative.ViewPropTypes.style,
+    onPress: _propTypes.default.func,
+    buttonDeletePosition: _propTypes.default.string,
+    buttonDeleteStyle: _reactNative.ViewPropTypes.style,
+    buttonActiveOpacity: _propTypes.default.number
+  };
+  var _default = PinView;
+  exports.default = _default;
+},451,[1,13,24,25,32,34,33,37,54,2,454,455,456,69],"node_modules/react-native-pin-view/index.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _default = Colors = {
+    primary: '#344955',
+    secondary: '#F9AA33',
+    text: '#232F34',
+    primaryText: 'lightgray',
+    primaryDark: '#2e414c',
+    secondaryDark: '#AE7623'
+  };
+
+  exports.default = _default;
+},453,[],"src/Colors.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _defineProperty2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/defineProperty"));
+
+  var _toConsumableArray2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/toConsumableArray"));
+
+  var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[4], "react-native");
+
+  var _jsxFileName = "/Users/hossein/Code/MobileNFCReader/node_modules/react-native-pin-view/libs/parts/KeyboardView.js";
+
+  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+  var emptyCustomButton = "empty";
+
+  var KeyboardView = function KeyboardView(_ref) {
+    var keyboardOnPress = _ref.keyboardOnPress,
+        keyboardViewStyle = _ref.keyboardViewStyle,
+        keyboardViewTextStyle = _ref.keyboardViewTextStyle,
+        pinLength = _ref.pinLength,
+        onComplete = _ref.onComplete,
+        bgColor = _ref.bgColor,
+        returnType = _ref.returnType,
+        textColor = _ref.textColor,
+        animatedDeleteButton = _ref.animatedDeleteButton,
+        deleteText = _ref.deleteText,
+        animatedDeleteButtonOnPress = _ref.animatedDeleteButtonOnPress,
+        styles = _ref.styles,
+        onPress = _ref.onPress,
+        buttonDeletePosition = _ref.buttonDeletePosition,
+        buttonDeleteStyle = _ref.buttonDeleteStyle,
+        buttonActiveOpacity = _ref.buttonActiveOpacity,
+        customButtonText = _ref.customButtonText,
+        onCustomButtonPress = _ref.onCustomButtonPress;
+    var data = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    var customOrEmptyButtonText = customButtonText != null ? customButtonText : emptyCustomButton;
+    var leftButtonDeletePositions = [deleteText, "0", customOrEmptyButtonText];
+    var rightButtonDeletePositions = [customOrEmptyButtonText, "0", deleteText];
+
+    var setButtonDeletePosition = function setButtonDeletePosition(arrToConcatLeft, arrToConcatRight) {
+      var newData = data;
+
+      if (buttonDeletePosition === "right") {
+        newData = [].concat((0, _toConsumableArray2.default)(data), (0, _toConsumableArray2.default)(arrToConcatRight));
+        return newData;
+      }
+
+      newData = [].concat((0, _toConsumableArray2.default)(data), (0, _toConsumableArray2.default)(arrToConcatLeft));
+      return newData;
+    };
+
+    if (_reactNative.I18nManager.isRTL) {
+      data = setButtonDeletePosition(leftButtonDeletePositions, rightButtonDeletePositions).reverse();
+    } else {
+      data = setButtonDeletePosition(leftButtonDeletePositions, rightButtonDeletePositions);
+    }
+
+    var renderItem = function renderItem(_ref2) {
+      var item = _ref2.item,
+          index = _ref2.index;
+      var style;
+      var onPressInactive;
+
+      var onPressKeyboard = function onPressKeyboard() {
+        return keyboardOnPress(item, returnType, pinLength, onComplete, onPress);
+      };
+
+      var ViewStyles = keyboardViewStyle;
+
+      if (item === deleteText) {
+        onPressInactive = animatedDeleteButtonOnPress;
+        style = [styles[0], {
+          visibility: "hidden",
+          opacity: animatedDeleteButton
+        }];
+        ViewStyles = _objectSpread({}, ViewStyles, {}, buttonDeleteStyle);
+      } else if (item === customButtonText) {
+        onPressInactive = false;
+        style = [styles[0]];
+      } else if (item === emptyCustomButton) {
+        onPressInactive = false;
+        style = [styles[0], {
+          opacity: 0
+        }];
+
+        onPressKeyboard = function onPressKeyboard() {};
+      } else {
+        onPressInactive = false;
+        style = [styles[0]];
+      }
+
+      return _react.default.createElement(_reactNative.TouchableOpacity, {
+        key: "key-item-" + index,
+        activeOpacity: buttonActiveOpacity,
+        onPress: onPressKeyboard,
+        disabled: onPressInactive,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 56
+        }
+      }, _react.default.createElement(_reactNative.Animated.View, {
+        style: [style, {
+          backgroundColor: bgColor
+        }, ViewStyles],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 61
+        }
+      }, _react.default.createElement(_reactNative.Text, {
+        style: [styles[1], {
+          color: textColor,
+          opacity: 1
+        }, keyboardViewTextStyle],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 64
+        }
+      }, item)));
+    };
+
+    return _react.default.createElement(_reactNative.FlatList, {
+      contentContainerStyle: {
+        flexDirection: _reactNative.I18nManager.isRTL ? "column-reverse" : "column",
+        alignItems: _reactNative.I18nManager.isRTL ? "flex-end" : "flex-start"
+      },
+      scrollEnabled: false,
+      horizontal: false,
+      vertical: true,
+      numColumns: 3,
+      renderItem: renderItem,
+      data: data,
+      keyExtractor: function keyExtractor(val, index) {
+        return "pinViewItem-" + index;
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 73
+      }
+    });
+  };
+
+  var _default = KeyboardView;
+  exports.default = _default;
+},454,[1,46,20,54,2],"node_modules/react-native-pin-view/libs/parts/KeyboardView.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[2], "react-native");
+
+  var _jsxFileName = "/Users/hossein/Code/MobileNFCReader/node_modules/react-native-pin-view/libs/parts/InputView.js";
+
+  var InputView = function InputView(_ref) {
+    var pinViewAnim = _ref.pinViewAnim,
+        inputViewStyle = _ref.inputViewStyle,
+        inputTextStyle = _ref.inputTextStyle,
+        showInputs = _ref.showInputs,
+        inputtedValues = _ref.inputtedValues,
+        animatedInputIndex = _ref.animatedInputIndex,
+        pinLength = _ref.pinLength,
+        bgColor = _ref.bgColor,
+        activeBgColor = _ref.activeBgColor,
+        styles = _ref.styles,
+        bgOpacity = _ref.bgOpacity;
+    var tilt = pinViewAnim.interpolate({
+      inputRange: [0, 0.3, 0.6, 0.9],
+      outputRange: [0, -50, 50, 0]
+    });
+
+    var inactiveInput = function inactiveInput(index) {
+      return _react.default.createElement(_reactNative.Animated.View, {
+        key: "passwordItem-" + index,
+        style: [styles[1], {
+          backgroundColor: bgColor,
+          opacity: bgOpacity
+        }, inputViewStyle],
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10
+        }
+      });
+    };
+
+    var activeInput = function activeInput(index) {
+      if (showInputs) {
+        return _react.default.createElement(_reactNative.Animated.View, {
+          key: "passwordItem-" + index,
+          style: [styles[2], {
+            backgroundColor: activeBgColor,
+            opacity: 1
+          }, inputViewStyle],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 21
+          }
+        }, _react.default.createElement(_reactNative.Text, {
+          style: inputTextStyle,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 27
+          }
+        }, inputtedValues[index]));
+      } else {
+        return _react.default.createElement(_reactNative.Animated.View, {
+          key: "passwordItem-" + index,
+          style: [styles[2], {
+            backgroundColor: activeBgColor,
+            opacity: 1
+          }, inputViewStyle],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 31
+          }
+        });
+      }
+    };
+
+    var ShowInput = function ShowInput(pinLength) {
+      var table = [];
+      {
+        for (var i = 0; i < pinLength; i++) {
+          if (animatedInputIndex[i] === undefined) {
+            table.push(inactiveInput(i));
+          } else {
+            table.push(activeInput(i));
+          }
+        }
+      }
+      return table;
+    };
+
+    return _react.default.createElement(_reactNative.Animated.View, {
+      style: [styles[0], {
+        transform: [{
+          translateX: tilt
+        }],
+        flexDirection: _reactNative.I18nManager.isRTL ? "row-reverse" : "row"
+      }],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 54
+      }
+    }, ShowInput(pinLength));
+  };
+
+  var _default = InputView;
+  exports.default = _default;
+},455,[1,54,2],"node_modules/react-native-pin-view/libs/parts/InputView.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[0], "react-native");
+
+  var _default = _reactNative.StyleSheet.create({
+    passwordInputView: {
+      alignSelf: "center"
+    },
+    passwordInputViewItem: {
+      alignItems: "center",
+      justifyContent: "center",
+      height: 35,
+      margin: 5,
+      width: 35,
+      borderRadius: 35 / 2
+    },
+    passwordInputViewItemActive: {
+      alignItems: "center",
+      justifyContent: "center",
+      height: 35,
+      width: 35,
+      margin: 5,
+      borderRadius: 35 / 2
+    },
+    keyboardView: {
+      alignItems: "center",
+      marginVertical: 15
+    },
+    keyboardViewItem: {
+      alignItems: "center",
+      justifyContent: "center",
+      height: 75,
+      width: 75,
+      margin: 15,
+      borderRadius: 75 / 2
+    },
+    keyboardViewItemText: {
+      fontSize: 22,
+      fontWeight: "900"
+    }
+  });
+
+  exports.default = _default;
+},456,[2],"node_modules/react-native-pin-view/libs/parts/styles.js");
 __r(91);
 __r(0);
 //# sourceMappingURL=index.map

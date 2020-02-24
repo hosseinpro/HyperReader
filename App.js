@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {SafeAreaView, View, Text, StatusBar} from 'react-native';
 import NfcReader from './src/NfcReader';
+import PinModal from './src/PinModal';
 
 class App extends Component {
   state = {
@@ -16,7 +17,11 @@ class App extends Component {
   };
 
   async getScript() {
-    const script = 'let r = await sendAPDU("00aa0000");\
+    const script =
+      '\
+    const pin = await pinPad("Salam",6);\
+    console.log(pin);\
+    let r = await sendAPDU("00aa0000");\
     return r;';
     return script;
   }
@@ -42,7 +47,11 @@ class App extends Component {
 
   async cardDetected() {
     this.state
-      .scriptRunner(global.nfcReader.transmit)
+      .scriptRunner(
+        global.nfcReader.transmit,
+        null,
+        global.pinModal.show.bind(global.pinModal),
+      )
       .then(result => {
         console.log(result);
       })
@@ -55,6 +64,7 @@ class App extends Component {
     return (
       <>
         <StatusBar barStyle="dark-content" />
+        <PinModal ref={pinModal => (global.pinModal = pinModal)} />
         <SafeAreaView>
           <View>
             <Text></Text>
