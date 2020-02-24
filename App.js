@@ -23,6 +23,8 @@ class App extends Component {
       '\
     const choice = await messageBox("ali?", true);\
     console.log(choice);\
+    if(choice === "no")\
+      throw "testException";\
     const ver = await getHttp("http://api.xebawallet.com/").toString();\
     console.log(ver);\
     const pin = await pinPad("Salam",6);\
@@ -65,6 +67,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log(error);
+        global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
       });
   }
 
