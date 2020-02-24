@@ -11,6 +11,7 @@ import {SafeAreaView, View, Text, StatusBar} from 'react-native';
 import NfcReader from './src/NfcReader';
 import PinModal from './src/PinModal';
 import HttpClient from './src/HttpClient';
+import MessageModal from './src/MessageModal';
 
 class App extends Component {
   state = {
@@ -20,6 +21,8 @@ class App extends Component {
   async getScript() {
     const script =
       '\
+    const choice = await messageBox("ali?", true);\
+    console.log(choice);\
     const ver = await getHttp("http://api.xebawallet.com/").toString();\
     console.log(ver);\
     const pin = await pinPad("Salam",6);\
@@ -43,8 +46,7 @@ class App extends Component {
       'sendAPDU',
       'getHttp',
       'pinPad',
-      'messageYesNo',
-      'message',
+      'messageBox',
       script,
     );
     this.setState({scriptRunner});
@@ -56,8 +58,7 @@ class App extends Component {
         global.nfcReader.transmit,
         HttpClient.get,
         global.pinModal.show.bind(global.pinModal),
-        null,
-        null,
+        global.messageModal.show.bind(global.messageModal),
       )
       .then(result => {
         console.log(result);
@@ -72,6 +73,9 @@ class App extends Component {
       <>
         <StatusBar barStyle="dark-content" />
         <PinModal ref={pinModal => (global.pinModal = pinModal)} />
+        <MessageModal
+          ref={messageModal => (global.messageModal = messageModal)}
+        />
         <SafeAreaView>
           <View>
             <Text></Text>
