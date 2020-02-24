@@ -21,7 +21,7 @@ export default class PinModal extends Component {
           resolve(pin);
         },
         onCancel: () => {
-          reject(new Error('Cancel'));
+          resolve('cancel');
         },
       });
     });

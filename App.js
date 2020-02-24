@@ -10,6 +10,7 @@ import React, {Component} from 'react';
 import {SafeAreaView, View, Text, StatusBar} from 'react-native';
 import NfcReader from './src/NfcReader';
 import PinModal from './src/PinModal';
+import HttpClient from './src/HttpClient';
 
 class App extends Component {
   state = {
@@ -19,7 +20,11 @@ class App extends Component {
   async getScript() {
     const script =
       '\
+    const ver = await getHttp("http://api.xebawallet.com/").toString();\
+    console.log(ver);\
     const pin = await pinPad("Salam",6);\
+    if(pin === "cancel")\
+      return "user canceled!";\
     console.log(pin);\
     let r = await sendAPDU("00aa0000");\
     return r;';
@@ -49,8 +54,10 @@ class App extends Component {
     this.state
       .scriptRunner(
         global.nfcReader.transmit,
-        null,
+        HttpClient.get,
         global.pinModal.show.bind(global.pinModal),
+        null,
+        null,
       )
       .then(result => {
         console.log(result);
