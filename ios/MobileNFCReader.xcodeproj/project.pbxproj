@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* MobileNFCReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MobileNFCReaderTests.m */; };
+		00E356F31AD99517003FC87E /* HyperReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HyperReaderTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -15,11 +15,11 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* MobileNFCReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MobileNFCReaderTests.m */; };
-		8BC350B265A1BDCDFB8BC93B /* libPods-MobileNFCReader-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD2D5DBB6055509350B85F6 /* libPods-MobileNFCReader-tvOS.a */; };
-		B69DB499178886A946959C19 /* libPods-MobileNFCReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A61D65EB386634414DE7F21D /* libPods-MobileNFCReader.a */; };
-		C033A012512EA60A2A648AA6 /* libPods-MobileNFCReader-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB9D74A55AE39DD2630AAD5 /* libPods-MobileNFCReader-tvOSTests.a */; };
-		F40DD887AA084E72166BF5C2 /* libPods-MobileNFCReaderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CD5ADCDC364F18549D10B3 /* libPods-MobileNFCReaderTests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* HyperReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HyperReaderTests.m */; };
+		8BC350B265A1BDCDFB8BC93B /* libPods-HyperReader-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD2D5DBB6055509350B85F6 /* libPods-HyperReader-tvOS.a */; };
+		B69DB499178886A946959C19 /* libPods-HyperReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A61D65EB386634414DE7F21D /* libPods-HyperReader.a */; };
+		C033A012512EA60A2A648AA6 /* libPods-HyperReader-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB9D74A55AE39DD2630AAD5 /* libPods-HyperReader-tvOSTests.a */; };
+		F40DD887AA084E72166BF5C2 /* libPods-HyperReaderTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CD5ADCDC364F18549D10B3 /* libPods-HyperReaderTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,45 +28,45 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = MobileNFCReader;
+			remoteInfo = HyperReader;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "MobileNFCReader-tvOS";
+			remoteInfo = "HyperReader-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		005262BFDBBC913F616EF1AD /* Pods-MobileNFCReader-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNFCReader-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MobileNFCReader-tvOS/Pods-MobileNFCReader-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		005262BFDBBC913F616EF1AD /* Pods-HyperReader-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperReader-tvOS.release.xcconfig"; path = "Target Support Files/Pods-HyperReader-tvOS/Pods-HyperReader-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* MobileNFCReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileNFCReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* HyperReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* MobileNFCReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobileNFCReaderTests.m; sourceTree = "<group>"; };
-		0BB9D74A55AE39DD2630AAD5 /* libPods-MobileNFCReader-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MobileNFCReader-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07F961A680F5B00A75B9A /* MobileNFCReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileNFCReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MobileNFCReader/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MobileNFCReader/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* HyperReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HyperReaderTests.m; sourceTree = "<group>"; };
+		0BB9D74A55AE39DD2630AAD5 /* libPods-HyperReader-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HyperReader-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* HyperReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = HyperReader/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = HyperReader/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MobileNFCReader/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MobileNFCReader/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MobileNFCReader/main.m; sourceTree = "<group>"; };
-		188C469FDF9252D68AE663DD /* Pods-MobileNFCReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNFCReader.release.xcconfig"; path = "Target Support Files/Pods-MobileNFCReader/Pods-MobileNFCReader.release.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* MobileNFCReader-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MobileNFCReader-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* MobileNFCReader-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MobileNFCReader-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D579444B5CC5F0C18DF5E05 /* Pods-MobileNFCReaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNFCReaderTests.debug.xcconfig"; path = "Target Support Files/Pods-MobileNFCReaderTests/Pods-MobileNFCReaderTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7CD2D5DBB6055509350B85F6 /* libPods-MobileNFCReader-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MobileNFCReader-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A61D65EB386634414DE7F21D /* libPods-MobileNFCReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MobileNFCReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9229B24C0C01AD82536E10E /* Pods-MobileNFCReader-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNFCReader-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MobileNFCReader-tvOSTests/Pods-MobileNFCReader-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		BD617D0122D526CCCED32A8A /* Pods-MobileNFCReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNFCReader.debug.xcconfig"; path = "Target Support Files/Pods-MobileNFCReader/Pods-MobileNFCReader.debug.xcconfig"; sourceTree = "<group>"; };
-		D4CD5ADCDC364F18549D10B3 /* libPods-MobileNFCReaderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MobileNFCReaderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA2A6C68E22890FCBE0F738D /* Pods-MobileNFCReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNFCReaderTests.release.xcconfig"; path = "Target Support Files/Pods-MobileNFCReaderTests/Pods-MobileNFCReaderTests.release.xcconfig"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HyperReader/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HyperReader/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HyperReader/main.m; sourceTree = "<group>"; };
+		188C469FDF9252D68AE663DD /* Pods-HyperReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperReader.release.xcconfig"; path = "Target Support Files/Pods-HyperReader/Pods-HyperReader.release.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* HyperReader-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HyperReader-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* HyperReader-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HyperReader-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D579444B5CC5F0C18DF5E05 /* Pods-HyperReaderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperReaderTests.debug.xcconfig"; path = "Target Support Files/Pods-HyperReaderTests/Pods-HyperReaderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7CD2D5DBB6055509350B85F6 /* libPods-HyperReader-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HyperReader-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61D65EB386634414DE7F21D /* libPods-HyperReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HyperReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9229B24C0C01AD82536E10E /* Pods-HyperReader-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperReader-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-HyperReader-tvOSTests/Pods-HyperReader-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BD617D0122D526CCCED32A8A /* Pods-HyperReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperReader.debug.xcconfig"; path = "Target Support Files/Pods-HyperReader/Pods-HyperReader.debug.xcconfig"; sourceTree = "<group>"; };
+		D4CD5ADCDC364F18549D10B3 /* libPods-HyperReaderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HyperReaderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA2A6C68E22890FCBE0F738D /* Pods-HyperReaderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperReaderTests.release.xcconfig"; path = "Target Support Files/Pods-HyperReaderTests/Pods-HyperReaderTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		FC08A20B6A8FE50F14210000 /* Pods-MobileNFCReader-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNFCReader-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-MobileNFCReader-tvOSTests/Pods-MobileNFCReader-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		FE492603439F68BB06F0A4D7 /* Pods-MobileNFCReader-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileNFCReader-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MobileNFCReader-tvOS/Pods-MobileNFCReader-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		FC08A20B6A8FE50F14210000 /* Pods-HyperReader-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperReader-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-HyperReader-tvOSTests/Pods-HyperReader-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		FE492603439F68BB06F0A4D7 /* Pods-HyperReader-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HyperReader-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-HyperReader-tvOS/Pods-HyperReader-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F40DD887AA084E72166BF5C2 /* libPods-MobileNFCReaderTests.a in Frameworks */,
+				F40DD887AA084E72166BF5C2 /* libPods-HyperReaderTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B69DB499178886A946959C19 /* libPods-MobileNFCReader.a in Frameworks */,
+				B69DB499178886A946959C19 /* libPods-HyperReader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BC350B265A1BDCDFB8BC93B /* libPods-MobileNFCReader-tvOS.a in Frameworks */,
+				8BC350B265A1BDCDFB8BC93B /* libPods-HyperReader-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +98,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C033A012512EA60A2A648AA6 /* libPods-MobileNFCReader-tvOSTests.a in Frameworks */,
+				C033A012512EA60A2A648AA6 /* libPods-HyperReader-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* MobileNFCReaderTests */ = {
+		00E356EF1AD99517003FC87E /* HyperReaderTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* MobileNFCReaderTests.m */,
+				00E356F21AD99517003FC87E /* HyperReaderTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = MobileNFCReaderTests;
+			path = HyperReaderTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -122,7 +122,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* MobileNFCReader */ = {
+		13B07FAE1A68108700A75B9A /* HyperReader */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -133,7 +133,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = MobileNFCReader;
+			name = HyperReader;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -141,10 +141,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				A61D65EB386634414DE7F21D /* libPods-MobileNFCReader.a */,
-				7CD2D5DBB6055509350B85F6 /* libPods-MobileNFCReader-tvOS.a */,
-				0BB9D74A55AE39DD2630AAD5 /* libPods-MobileNFCReader-tvOSTests.a */,
-				D4CD5ADCDC364F18549D10B3 /* libPods-MobileNFCReaderTests.a */,
+				A61D65EB386634414DE7F21D /* libPods-HyperReader.a */,
+				7CD2D5DBB6055509350B85F6 /* libPods-HyperReader-tvOS.a */,
+				0BB9D74A55AE39DD2630AAD5 /* libPods-HyperReader-tvOSTests.a */,
+				D4CD5ADCDC364F18549D10B3 /* libPods-HyperReaderTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,14 +152,14 @@
 		6FCC7B53CDFAC142CA7184B2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BD617D0122D526CCCED32A8A /* Pods-MobileNFCReader.debug.xcconfig */,
-				188C469FDF9252D68AE663DD /* Pods-MobileNFCReader.release.xcconfig */,
-				FE492603439F68BB06F0A4D7 /* Pods-MobileNFCReader-tvOS.debug.xcconfig */,
-				005262BFDBBC913F616EF1AD /* Pods-MobileNFCReader-tvOS.release.xcconfig */,
-				A9229B24C0C01AD82536E10E /* Pods-MobileNFCReader-tvOSTests.debug.xcconfig */,
-				FC08A20B6A8FE50F14210000 /* Pods-MobileNFCReader-tvOSTests.release.xcconfig */,
-				2D579444B5CC5F0C18DF5E05 /* Pods-MobileNFCReaderTests.debug.xcconfig */,
-				EA2A6C68E22890FCBE0F738D /* Pods-MobileNFCReaderTests.release.xcconfig */,
+				BD617D0122D526CCCED32A8A /* Pods-HyperReader.debug.xcconfig */,
+				188C469FDF9252D68AE663DD /* Pods-HyperReader.release.xcconfig */,
+				FE492603439F68BB06F0A4D7 /* Pods-HyperReader-tvOS.debug.xcconfig */,
+				005262BFDBBC913F616EF1AD /* Pods-HyperReader-tvOS.release.xcconfig */,
+				A9229B24C0C01AD82536E10E /* Pods-HyperReader-tvOSTests.debug.xcconfig */,
+				FC08A20B6A8FE50F14210000 /* Pods-HyperReader-tvOSTests.release.xcconfig */,
+				2D579444B5CC5F0C18DF5E05 /* Pods-HyperReaderTests.debug.xcconfig */,
+				EA2A6C68E22890FCBE0F738D /* Pods-HyperReaderTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -175,9 +175,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* MobileNFCReader */,
+				13B07FAE1A68108700A75B9A /* HyperReader */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* MobileNFCReaderTests */,
+				00E356EF1AD99517003FC87E /* HyperReaderTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				6FCC7B53CDFAC142CA7184B2 /* Pods */,
@@ -190,10 +190,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* MobileNFCReader.app */,
-				00E356EE1AD99517003FC87E /* MobileNFCReaderTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* MobileNFCReader-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* MobileNFCReader-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* HyperReader.app */,
+				00E356EE1AD99517003FC87E /* HyperReaderTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* HyperReader-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* HyperReader-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,9 +201,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* MobileNFCReaderTests */ = {
+		00E356ED1AD99517003FC87E /* HyperReaderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MobileNFCReaderTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HyperReaderTests" */;
 			buildPhases = (
 				EB4699773485ABFA3031D3E8 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -215,14 +215,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = MobileNFCReaderTests;
-			productName = MobileNFCReaderTests;
-			productReference = 00E356EE1AD99517003FC87E /* MobileNFCReaderTests.xctest */;
+			name = HyperReaderTests;
+			productName = HyperReaderTests;
+			productReference = 00E356EE1AD99517003FC87E /* HyperReaderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* MobileNFCReader */ = {
+		13B07F861A680F5B00A75B9A /* HyperReader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MobileNFCReader" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HyperReader" */;
 			buildPhases = (
 				7738862571C3F0E99827A961 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -235,14 +235,14 @@
 			);
 			dependencies = (
 			);
-			name = MobileNFCReader;
-			productName = MobileNFCReader;
-			productReference = 13B07F961A680F5B00A75B9A /* MobileNFCReader.app */;
+			name = HyperReader;
+			productName = HyperReader;
+			productReference = 13B07F961A680F5B00A75B9A /* HyperReader.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* MobileNFCReader-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* HyperReader-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MobileNFCReader-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HyperReader-tvOS" */;
 			buildPhases = (
 				86F2D1A1CD8BB4C9694283FA /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -255,14 +255,14 @@
 			);
 			dependencies = (
 			);
-			name = "MobileNFCReader-tvOS";
-			productName = "MobileNFCReader-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* MobileNFCReader-tvOS.app */;
+			name = "HyperReader-tvOS";
+			productName = "HyperReader-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* HyperReader-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* MobileNFCReader-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* HyperReader-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MobileNFCReader-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HyperReader-tvOSTests" */;
 			buildPhases = (
 				E23ABEE1188942568B89F015 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -274,9 +274,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "MobileNFCReader-tvOSTests";
-			productName = "MobileNFCReader-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* MobileNFCReader-tvOSTests.xctest */;
+			name = "HyperReader-tvOSTests";
+			productName = "HyperReader-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* HyperReader-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -303,7 +303,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MobileNFCReader" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "HyperReader" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -316,10 +316,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* MobileNFCReader */,
-				00E356ED1AD99517003FC87E /* MobileNFCReaderTests */,
-				2D02E47A1E0B4A5D006451C7 /* MobileNFCReader-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* MobileNFCReader-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* HyperReader */,
+				00E356ED1AD99517003FC87E /* HyperReaderTests */,
+				2D02E47A1E0B4A5D006451C7 /* HyperReader-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* HyperReader-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -402,7 +402,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MobileNFCReader-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-HyperReader-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -424,7 +424,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MobileNFCReader-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-HyperReader-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -446,7 +446,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MobileNFCReader-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-HyperReader-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -468,7 +468,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MobileNFCReaderTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-HyperReaderTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -520,7 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* MobileNFCReaderTests.m in Sources */,
+				00E356F31AD99517003FC87E /* HyperReaderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* MobileNFCReaderTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* HyperReaderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,12 +555,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* MobileNFCReader */;
+			target = 13B07F861A680F5B00A75B9A /* HyperReader */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* MobileNFCReader-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* HyperReader-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -572,7 +572,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = MobileNFCReader;
+			path = HyperReader;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -580,14 +580,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D579444B5CC5F0C18DF5E05 /* Pods-MobileNFCReaderTests.debug.xcconfig */;
+			baseConfigurationReference = 2D579444B5CC5F0C18DF5E05 /* Pods-HyperReaderTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MobileNFCReaderTests/Info.plist;
+				INFOPLIST_FILE = HyperReaderTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -597,17 +597,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileNFCReader.app/MobileNFCReader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperReader.app/HyperReader";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA2A6C68E22890FCBE0F738D /* Pods-MobileNFCReaderTests.release.xcconfig */;
+			baseConfigurationReference = EA2A6C68E22890FCBE0F738D /* Pods-HyperReaderTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = MobileNFCReaderTests/Info.plist;
+				INFOPLIST_FILE = HyperReaderTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -617,18 +617,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileNFCReader.app/MobileNFCReader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperReader.app/HyperReader";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD617D0122D526CCCED32A8A /* Pods-MobileNFCReader.debug.xcconfig */;
+			baseConfigurationReference = BD617D0122D526CCCED32A8A /* Pods-HyperReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				INFOPLIST_FILE = MobileNFCReader/Info.plist;
+				INFOPLIST_FILE = HyperReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -636,18 +636,18 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = MobileNFCReader;
+				PRODUCT_NAME = HyperReader;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 188C469FDF9252D68AE663DD /* Pods-MobileNFCReader.release.xcconfig */;
+			baseConfigurationReference = 188C469FDF9252D68AE663DD /* Pods-HyperReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = MobileNFCReader/Info.plist;
+				INFOPLIST_FILE = HyperReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -655,14 +655,14 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = MobileNFCReader;
+				PRODUCT_NAME = HyperReader;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE492603439F68BB06F0A4D7 /* Pods-MobileNFCReader-tvOS.debug.xcconfig */;
+			baseConfigurationReference = FE492603439F68BB06F0A4D7 /* Pods-HyperReader-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -673,14 +673,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MobileNFCReader-tvOS/Info.plist";
+				INFOPLIST_FILE = "HyperReader-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MobileNFCReader-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.HyperReader-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -690,7 +690,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 005262BFDBBC913F616EF1AD /* Pods-MobileNFCReader-tvOS.release.xcconfig */;
+			baseConfigurationReference = 005262BFDBBC913F616EF1AD /* Pods-HyperReader-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -701,14 +701,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MobileNFCReader-tvOS/Info.plist";
+				INFOPLIST_FILE = "HyperReader-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MobileNFCReader-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.HyperReader-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -718,7 +718,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9229B24C0C01AD82536E10E /* Pods-MobileNFCReader-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = A9229B24C0C01AD82536E10E /* Pods-HyperReader-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -728,24 +728,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MobileNFCReader-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "HyperReader-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MobileNFCReader-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.HyperReader-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileNFCReader-tvOS.app/MobileNFCReader-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperReader-tvOS.app/HyperReader-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC08A20B6A8FE50F14210000 /* Pods-MobileNFCReader-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = FC08A20B6A8FE50F14210000 /* Pods-HyperReader-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -755,17 +755,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MobileNFCReader-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "HyperReader-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MobileNFCReader-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.HyperReader-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileNFCReader-tvOS.app/MobileNFCReader-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperReader-tvOS.app/HyperReader-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -872,7 +872,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MobileNFCReaderTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HyperReaderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -881,7 +881,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MobileNFCReader" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HyperReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -890,7 +890,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MobileNFCReader-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HyperReader-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -899,7 +899,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MobileNFCReader-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HyperReader-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -908,7 +908,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MobileNFCReader" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "HyperReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

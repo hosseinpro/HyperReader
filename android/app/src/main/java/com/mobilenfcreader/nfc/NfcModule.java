@@ -1,5 +1,5 @@
 
-package com.mobilenfcreader.nfc;
+package com.HyperReader.nfc;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;

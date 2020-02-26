@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'MobileNFCReader' do
-  # Pods for MobileNFCReader
+target 'HyperReader' do
+  # Pods for HyperReader
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,7 +34,7 @@ target 'MobileNFCReader' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'MobileNFCReaderTests' do
+  target 'HyperReaderTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -42,10 +42,10 @@ target 'MobileNFCReader' do
   use_native_modules!
 end
 
-target 'MobileNFCReader-tvOS' do
-  # Pods for MobileNFCReader-tvOS
+target 'HyperReader-tvOS' do
+  # Pods for HyperReader-tvOS
 
-  target 'MobileNFCReader-tvOSTests' do
+  target 'HyperReader-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

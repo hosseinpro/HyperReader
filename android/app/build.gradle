@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.mobilenfcreader"
+        applicationId "com.HyperReader"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
