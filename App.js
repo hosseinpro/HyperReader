@@ -1,46 +1,46 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
 import {SafeAreaView, View, Text, StatusBar} from 'react-native';
 import NfcReader from './src/NfcReader';
 import PinModal from './src/PinModal';
 import HttpClient from './src/HttpClient';
 import MessageModal from './src/MessageModal';
+import PushNotification from 'react-native-push-notification';
+
+PushNotification.configure({
+  onRegister: function(token) {
+    console.log('TOKEN:', token);
+  },
+
+  onNotification: function(notification) {
+    global.app.runScript(notification.script);
+
+    // notification.finish(PushNotificationIOS.FetchResult.NoData);
+  },
+
+  senderID: '683964011296',
+
+  permissions: {
+    alert: true,
+    badge: true,
+    sound: true,
+  },
+
+  popInitialNotification: true,
+
+  requestPermissions: true,
+});
 
 class App extends Component {
   state = {
     scriptRunner: '',
   };
 
-  async getScript() {
-    const script =
-      '\
-    const choice = await messageBox("ali?", true);\
-    console.log(choice);\
-    if(choice === "no")\
-      throw "testException";\
-    const ver = await getHttp("http://api.xebawallet.com/").toString();\
-    console.log(ver);\
-    const pin = await pinPad("Salam",6);\
-    if(pin === "cancel")\
-      return "user canceled!";\
-    console.log(pin);\
-    let r = await sendAPDU("00aa0000");\
-    return r;';
-    return script;
+  componentDidMount() {
+    global.nfcReader = new NfcReader();
+    global.app = this;
   }
 
-  async componentDidMount() {
-    global.nfcReader = new NfcReader();
-    global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
-
-    const script = await this.getScript();
+  runScript(script) {
     const AsyncFunction = new Function(
       `return Object.getPrototypeOf(async function(){}).constructor`,
     )();
@@ -52,6 +52,8 @@ class App extends Component {
       script,
     );
     this.setState({scriptRunner});
+
+    global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
   }
 
   async cardDetected() {

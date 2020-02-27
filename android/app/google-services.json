@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "683964011296",
+    "firebase_url": "https://hyperreader.firebaseio.com",
+    "project_id": "hyperreader",
+    "storage_bucket": "hyperreader.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683964011296:android:fb65fdff0e923b6ac6bd45",
+        "android_client_info": {
+          "package_name": "com.HyperReader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683964011296-cru7mmmp7s8ro052f69hhjp6q5r8vi26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKxy_st8OZNIdKfimKQuwqNoZS5-D5Lng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683964011296-cru7mmmp7s8ro052f69hhjp6q5r8vi26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
