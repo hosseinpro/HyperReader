@@ -12,7 +12,12 @@ PushNotification.configure({
   },
 
   onNotification: function(notification) {
-    global.app.runScript(notification.script);
+    global.app.run(
+      notification.requestid,
+      notification.userid,
+      notification.text,
+      notification.script,
+    );
 
     // notification.finish(PushNotificationIOS.FetchResult.NoData);
   },
@@ -40,18 +45,20 @@ class App extends Component {
     global.app = this;
   }
 
-  runScript(script) {
+  run(requestid, userid, text, script) {
     const AsyncFunction = new Function(
       `return Object.getPrototypeOf(async function(){}).constructor`,
     )();
     const scriptRunner = new AsyncFunction(
-      'sendAPDU',
-      'getHttp',
-      'pinPad',
-      'messageBox',
+      '_requestid',
+      '_userid',
+      '_sendAPDU',
+      '_getHttp',
+      '_pinPad',
+      '_messageBox',
       script,
     );
-    this.setState({scriptRunner});
+    this.setState({scriptRunner, requestid, userid});
 
     global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
   }
@@ -59,6 +66,8 @@ class App extends Component {
   async cardDetected() {
     this.state
       .scriptRunner(
+        this.state.requestid,
+        this.state.userid,
         global.nfcReader.transmit,
         HttpClient.get,
         global.pinModal.show.bind(global.pinModal),
