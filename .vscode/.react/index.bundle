@@ -95974,11 +95974,15 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _reactNativePushNotification = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[14], "react-native-push-notification"));
 
+  var _Server = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[15], "./src/Server"));
+
+  var _UserItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[16], "./src/UserItem"));
+
   var _jsxFileName = "/Users/hossein/Code/HyperReader/App.js";
 
   _reactNativePushNotification.default.configure({
     onRegister: function onRegister(token) {
-      console.log('TOKEN:', token);
+      global.app.load(token.token);
     },
     onNotification: function onNotification(notification) {
       global.app.run(notification.requestid, notification.userid, notification.text, notification.script);
@@ -96009,7 +96013,8 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
       _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(App)).call.apply(_getPrototypeOf2, [this].concat(args)));
       _this.state = {
-        scriptRunner: ''
+        scriptRunner: '',
+        userids: []
       };
       return _this;
     }
@@ -96019,6 +96024,30 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       value: function componentDidMount() {
         global.nfcReader = new _NfcReader.default();
         global.app = this;
+      }
+    }, {
+      key: "load",
+      value: function load(token) {
+        var userids;
+        return _regenerator.default.async(function load$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _regenerator.default.awrap(_Server.default.getUids(token));
+
+              case 2:
+                userids = _context.sent;
+                this.setState({
+                  userids: userids
+                });
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
       }
     }, {
       key: "run",
@@ -96037,9 +96066,9 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       value: function cardDetected() {
         var _this2 = this;
 
-        return _regenerator.default.async(function cardDetected$(_context) {
+        return _regenerator.default.async(function cardDetected$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
                 this.state.scriptRunner(this.state.requestid, this.state.userid, global.nfcReader.transmit, _HttpClient.default.get, global.pinModal.show.bind(global.pinModal), global.messageModal.show.bind(global.messageModal)).then(function (result) {
                   console.log(result);
@@ -96050,7 +96079,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
               case 1:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
         }, null, this);
@@ -96062,7 +96091,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           barStyle: "dark-content",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 88
+            lineNumber: 104
           }
         }), _react.default.createElement(_PinModal.default, {
           ref: function ref(pinModal) {
@@ -96070,7 +96099,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 89
+            lineNumber: 105
           }
         }), _react.default.createElement(_MessageModal.default, {
           ref: function ref(messageModal) {
@@ -96078,24 +96107,57 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 90
+            lineNumber: 106
           }
         }), _react.default.createElement(_reactNative.SafeAreaView, {
+          style: {
+            flex: 1
+          },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 93
+            lineNumber: 109
           }
         }, _react.default.createElement(_reactNative.View, {
+          style: {
+            margin: 12,
+            flex: 1
+          },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 94
+            lineNumber: 110
           }
-        }, _react.default.createElement(_reactNative.Text, {
+        }, _react.default.createElement(_reactNative.View, {
+          style: {
+            flex: 1
+          },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 95
+            lineNumber: 111
           }
-        }))));
+        }, this.state.userids.map(function (userid) {
+          return _react.default.createElement(_UserItem.default, {
+            key: userid,
+            userid: userid,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 113
+            }
+          });
+        })), _react.default.createElement(_reactNative.View, {
+          style: {
+            justifyContent: 'flex-end'
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 116
+          }
+        }, _react.default.createElement(_reactNative.Button, {
+          title: "ADD",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 120
+          }
+        })))));
       }
     }]);
     return App;
@@ -96103,7 +96165,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _default = App;
   exports.default = _default;
-},447,[1,9,103,24,25,32,34,37,54,2,448,449,455,482,483],"App.js");
+},447,[1,9,103,24,25,32,34,37,54,2,448,449,455,482,483,486,487],"App.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -98598,6 +98660,184 @@ __d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
 }
 ;
 },485,[],"app.json");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _regenerator = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/regenerator"));
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/createClass"));
+
+  var _axios = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "axios"));
+
+  var Server = function () {
+    function Server() {
+      (0, _classCallCheck2.default)(this, Server);
+    }
+
+    (0, _createClass2.default)(Server, null, [{
+      key: "getUids",
+      value: function getUids(token) {
+        var query, res;
+        return _regenerator.default.async(function getUids$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                query = Server.baseAddress + '/getuids?' + 'token=' + token;
+                _context.next = 3;
+                return _regenerator.default.awrap(_axios.default.get(query));
+
+              case 3:
+                res = _context.sent;
+                return _context.abrupt("return", res.data);
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        });
+      }
+    }, {
+      key: "addUid",
+      value: function addUid(userid, token) {
+        var query, res;
+        return _regenerator.default.async(function addUid$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                query = Server.baseAddress + '/adduid?' + 'userid=' + userid + '&token=' + token;
+                _context2.next = 3;
+                return _regenerator.default.awrap(_axios.default.get(query));
+
+              case 3:
+                res = _context2.sent;
+                return _context2.abrupt("return", res.data);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        });
+      }
+    }, {
+      key: "removeUid",
+      value: function removeUid(userid) {
+        var query, res;
+        return _regenerator.default.async(function removeUid$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                query = Server.baseAddress + '/removeuid?' + 'userid=' + userid;
+                _context3.next = 3;
+                return _regenerator.default.awrap(_axios.default.get(query));
+
+              case 3:
+                res = _context3.sent;
+                return _context3.abrupt("return", res.data);
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        });
+      }
+    }, {
+      key: "uidScript",
+      value: function uidScript() {
+        var query, res;
+        return _regenerator.default.async(function uidScript$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                query = Server.baseAddress + '/uidscript';
+                _context4.next = 3;
+                return _regenerator.default.awrap(_axios.default.get(query));
+
+              case 3:
+                res = _context4.sent;
+                return _context4.abrupt("return", res.data);
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        });
+      }
+    }]);
+    return Server;
+  }();
+
+  exports.default = Server;
+  Server.baseAddress = 'https://us-central1-hyperreader.cloudfunctions.net/app';
+},486,[1,103,24,25,456],"src/Server.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = UserItem;
+
+  var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[2], "react-native");
+
+  var _Colors = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./Colors"));
+
+  var _jsxFileName = "/Users/hossein/Code/HyperReader/src/UserItem.js";
+
+  function UserItem(props) {
+    return _react.default.createElement(_reactNative.View, {
+      style: styles.userItem,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7
+      }
+    }, _react.default.createElement(_reactNative.Text, {
+      style: {
+        flex: 1,
+        fontSize: 18,
+        textAlignVertical: 'center'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8
+      }
+    }, props.userid), _react.default.createElement(_reactNative.Button, {
+      title: "DEL",
+      color: "red",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      }
+    }));
+  }
+
+  _c = UserItem;
+
+  var styles = _reactNative.StyleSheet.create({
+    userItem: {
+      flexDirection: 'row',
+      backgroundColor: '#EEEEEE',
+      padding: 12,
+      marginBottom: 12
+    }
+  });
+
+  var _c;
+
+  $RefreshReg$(_c, "UserItem");
+},487,[1,54,2,454],"src/UserItem.js");
 __r(91);
 __r(0);
 //# sourceMappingURL=index.map

@@ -1,14 +1,24 @@
 import React, {Component} from 'react';
-import {SafeAreaView, View, Text, StatusBar} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Button,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import NfcReader from './src/NfcReader';
 import PinModal from './src/PinModal';
 import HttpClient from './src/HttpClient';
 import MessageModal from './src/MessageModal';
 import PushNotification from 'react-native-push-notification';
+import Server from './src/Server';
+import UserItem from './src/UserItem';
 
 PushNotification.configure({
   onRegister: function(token) {
-    console.log('TOKEN:', token);
+    global.app.load(token.token);
   },
 
   onNotification: function(notification) {
@@ -38,11 +48,17 @@ PushNotification.configure({
 class App extends Component {
   state = {
     scriptRunner: '',
+    userids: [],
   };
 
   componentDidMount() {
     global.nfcReader = new NfcReader();
     global.app = this;
+  }
+
+  async load(token) {
+    const userids = await Server.getUids(token);
+    this.setState({userids});
   }
 
   run(requestid, userid, text, script) {
@@ -64,22 +80,24 @@ class App extends Component {
   }
 
   async cardDetected() {
-    this.state
-      .scriptRunner(
+    try {
+      const result = await this.state.scriptRunner(
         this.state.requestid,
         this.state.userid,
         global.nfcReader.transmit,
         HttpClient.get,
         global.pinModal.show.bind(global.pinModal),
         global.messageModal.show.bind(global.messageModal),
-      )
-      .then(result => {
-        console.log(result);
-      })
-      .catch(error => {
-        console.log(error);
-        global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
-      });
+      );
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+      global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
+    }
+  }
+
+  async onPressAdd() {
+    const script = await Server.uidScript();
   }
 
   render() {
@@ -90,9 +108,19 @@ class App extends Component {
         <MessageModal
           ref={messageModal => (global.messageModal = messageModal)}
         />
-        <SafeAreaView>
-          <View>
-            <Text></Text>
+        <SafeAreaView style={{flex: 1}}>
+          <View style={{margin: 12, flex: 1}}>
+            <View style={{flex: 1}}>
+              {this.state.userids.map(userid => (
+                <UserItem key={userid} userid={userid} />
+              ))}
+            </View>
+            <View
+              style={{
+                justifyContent: 'flex-end',
+              }}>
+              <Button title="ADD" onPress={() => this.onPressAdd()} />
+            </View>
           </View>
         </SafeAreaView>
       </>
