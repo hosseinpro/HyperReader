@@ -48,7 +48,9 @@ PushNotification.configure({
 class App extends Component {
   state = {
     scriptRunner: '',
+    token: '',
     userids: [],
+    add: false,
   };
 
   componentDidMount() {
@@ -57,8 +59,11 @@ class App extends Component {
   }
 
   async load(token) {
+    if (token == undefined) {
+      token = this.state.token;
+    }
     const userids = await Server.getUids(token);
-    this.setState({userids});
+    this.setState({token, userids});
   }
 
   run(requestid, userid, text, script) {
@@ -79,25 +84,36 @@ class App extends Component {
     global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
   }
 
-  async cardDetected() {
-    try {
-      const result = await this.state.scriptRunner(
+  cardDetected() {
+    this.state
+      .scriptRunner(
         this.state.requestid,
         this.state.userid,
         global.nfcReader.transmit,
         HttpClient.get,
         global.pinModal.show.bind(global.pinModal),
         global.messageModal.show.bind(global.messageModal),
-      );
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-      global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
-    }
+      )
+      .then(result => {
+        console.log('before if');
+        if (this.state.add) {
+          console.log('after if');
+          Server.addUid(result, this.state.token).then(result => {
+            console.log('addUid');
+            this.load();
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        global.nfcReader.enableCardDetection(this.cardDetected.bind(this));
+      });
   }
 
   async onPressAdd() {
     const script = await Server.uidScript();
+    this.setState({add: true});
+    this.run(null, null, null, script);
   }
 
   render() {

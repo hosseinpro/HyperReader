@@ -96014,7 +96014,9 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(App)).call.apply(_getPrototypeOf2, [this].concat(args)));
       _this.state = {
         scriptRunner: '',
-        userids: []
+        token: '',
+        userids: [],
+        add: false
       };
       return _this;
     }
@@ -96033,16 +96035,21 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                if (token == undefined) {
+                  token = this.state.token;
+                }
+
+                _context.next = 3;
                 return _regenerator.default.awrap(_Server.default.getUids(token));
 
-              case 2:
+              case 3:
                 userids = _context.sent;
                 this.setState({
+                  token: token,
                   userids: userids
                 });
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -96066,18 +96073,35 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       value: function cardDetected() {
         var _this2 = this;
 
-        return _regenerator.default.async(function cardDetected$(_context2) {
+        this.state.scriptRunner(this.state.requestid, this.state.userid, global.nfcReader.transmit, _HttpClient.default.get, global.pinModal.show.bind(global.pinModal), global.messageModal.show.bind(global.messageModal)).then(function (result) {
+          console.log('before if');
+
+          if (_this2.state.add) {
+            _this2.x();
+          }
+        }).catch(function (error) {
+          console.log(error);
+          global.nfcReader.enableCardDetection(_this2.cardDetected.bind(_this2));
+        });
+      }
+    }, {
+      key: "x",
+      value: function x() {
+        var result;
+        return _regenerator.default.async(function x$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                this.state.scriptRunner(this.state.requestid, this.state.userid, global.nfcReader.transmit, _HttpClient.default.get, global.pinModal.show.bind(global.pinModal), global.messageModal.show.bind(global.messageModal)).then(function (result) {
-                  console.log(result);
-                }).catch(function (error) {
-                  console.log(error);
-                  global.nfcReader.enableCardDetection(_this2.cardDetected.bind(_this2));
-                });
+                console.log('after if');
+                _context2.next = 3;
+                return _regenerator.default.awrap(_Server.default.addUid(result, this.state.token));
 
-              case 1:
+              case 3:
+                result = _context2.sent;
+                console.log('addUid');
+                this.load();
+
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -96085,13 +96109,40 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         }, null, this);
       }
     }, {
+      key: "onPressAdd",
+      value: function onPressAdd() {
+        var script;
+        return _regenerator.default.async(function onPressAdd$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _regenerator.default.awrap(_Server.default.uidScript());
+
+              case 2:
+                script = _context3.sent;
+                this.setState({
+                  add: true
+                });
+                this.run(null, null, null, script);
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
       key: "render",
       value: function render() {
+        var _this3 = this;
+
         return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactNative.StatusBar, {
           barStyle: "dark-content",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 104
+            lineNumber: 130
           }
         }), _react.default.createElement(_PinModal.default, {
           ref: function ref(pinModal) {
@@ -96099,7 +96150,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 105
+            lineNumber: 131
           }
         }), _react.default.createElement(_MessageModal.default, {
           ref: function ref(messageModal) {
@@ -96107,7 +96158,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 106
+            lineNumber: 132
           }
         }), _react.default.createElement(_reactNative.SafeAreaView, {
           style: {
@@ -96115,7 +96166,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 109
+            lineNumber: 135
           }
         }, _react.default.createElement(_reactNative.View, {
           style: {
@@ -96124,7 +96175,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 110
+            lineNumber: 136
           }
         }, _react.default.createElement(_reactNative.View, {
           style: {
@@ -96132,7 +96183,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 111
+            lineNumber: 137
           }
         }, this.state.userids.map(function (userid) {
           return _react.default.createElement(_UserItem.default, {
@@ -96140,7 +96191,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
             userid: userid,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 113
+              lineNumber: 139
             }
           });
         })), _react.default.createElement(_reactNative.View, {
@@ -96149,13 +96200,16 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 116
+            lineNumber: 142
           }
         }, _react.default.createElement(_reactNative.Button, {
           title: "ADD",
+          onPress: function onPress() {
+            return _this3.onPressAdd();
+          },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 120
+            lineNumber: 146
           }
         })))));
       }
@@ -98783,47 +98837,99 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
+
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.default = UserItem;
+  exports.default = void 0;
 
-  var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "react"));
+  var _regenerator = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/regenerator"));
 
-  var _reactNative = _$$_REQUIRE(_dependencyMap[2], "react-native");
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/classCallCheck"));
 
-  var _Colors = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./Colors"));
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[8], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[9], "react-native");
+
+  var _Server = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "./Server"));
 
   var _jsxFileName = "/Users/hossein/Code/HyperReader/src/UserItem.js";
 
-  function UserItem(props) {
-    return _react.default.createElement(_reactNative.View, {
-      style: styles.userItem,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 7
-      }
-    }, _react.default.createElement(_reactNative.Text, {
-      style: {
-        flex: 1,
-        fontSize: 18,
-        textAlignVertical: 'center'
-      },
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 8
-      }
-    }, props.userid), _react.default.createElement(_reactNative.Button, {
-      title: "DEL",
-      color: "red",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 11
-      }
-    }));
-  }
+  var UserItem = function (_Component) {
+    (0, _inherits2.default)(UserItem, _Component);
 
-  _c = UserItem;
+    function UserItem() {
+      (0, _classCallCheck2.default)(this, UserItem);
+      return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(UserItem).apply(this, arguments));
+    }
+
+    (0, _createClass2.default)(UserItem, [{
+      key: "onPressDel",
+      value: function onPressDel() {
+        return _regenerator.default.async(function onPressDel$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _regenerator.default.awrap(_Server.default.removeUid(this.props.userid));
+
+              case 2:
+                global.app.load();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, null, this);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this = this;
+
+        return _react.default.createElement(_reactNative.View, {
+          style: styles.userItem,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 13
+          }
+        }, _react.default.createElement(_reactNative.Text, {
+          style: {
+            flex: 1,
+            fontSize: 18,
+            textAlignVertical: 'center'
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 14
+          }
+        }, this.props.userid), _react.default.createElement(_reactNative.Button, {
+          title: "DEL",
+          color: "red",
+          onPress: function onPress() {
+            return _this.onPressDel();
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 17
+          }
+        }));
+      }
+    }]);
+    return UserItem;
+  }(_react.Component);
+
+  exports.default = UserItem;
 
   var styles = _reactNative.StyleSheet.create({
     userItem: {
@@ -98833,11 +98939,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       marginBottom: 12
     }
   });
-
-  var _c;
-
-  $RefreshReg$(_c, "UserItem");
-},487,[1,54,2,454],"src/UserItem.js");
+},487,[1,9,103,24,25,32,34,37,54,2,486],"src/UserItem.js");
 __r(91);
 __r(0);
 //# sourceMappingURL=index.map
