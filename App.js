@@ -15,6 +15,7 @@ import MessageModal from './src/MessageModal';
 import PushNotification from 'react-native-push-notification';
 import Server from './src/Server';
 import UserItem from './src/UserItem';
+import firebase from 'react-native-firebase';
 
 PushNotification.configure({
   onRegister: function(token) {
@@ -62,7 +63,19 @@ class App extends Component {
     if (token == undefined) {
       token = this.state.token;
     }
-    const userids = await Server.getUids(token);
+
+    // const userids = await Server.getUids(token);
+
+    const snapshot = await firebase
+      .firestore()
+      .collection('users')
+      .where('token', '==', token)
+      .get();
+
+    let userids = [];
+    snapshot.forEach(doc => {
+      userids.push(doc.id);
+    });
     this.setState({token, userids});
   }
 
@@ -98,10 +111,17 @@ class App extends Component {
         console.log('before if');
         if (this.state.add) {
           console.log('after if');
-          Server.addUid(result, this.state.token).then(result => {
-            console.log('addUid');
-            this.load();
-          });
+          // Server.addUid(result, this.state.token).then(result => {
+
+          firebase
+            .firestore()
+            .collection('users')
+            .doc(result)
+            .set({token: this.state.token})
+            .then(result => {
+              console.log('addUid');
+              this.load();
+            });
         }
       })
       .catch(error => {
@@ -111,7 +131,14 @@ class App extends Component {
   }
 
   async onPressAdd() {
-    const script = await Server.uidScript();
+    // const script = await Server.uidScript();
+
+    const doc = await firebase
+      .firestore()
+      .collection('setting')
+      .doc('uidscript')
+      .get();
+    const script = doc.data().script;
     this.setState({add: true});
     this.run(null, null, null, script);
   }

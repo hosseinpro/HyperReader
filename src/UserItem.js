@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 import Server from './Server';
+import firebase from 'react-native-firebase';
 
 export default class UserItem extends Component {
   async onPressDel() {
-    await Server.removeUid(this.props.userid);
-    global.app.load();
+    // await Server.removeUid(this.props.userid);
+
+    await firebase
+      .firestore()
+      .collection('users')
+      .doc(this.props.userid)
+      .delete();
+    await global.app.load();
   }
 
   render() {

@@ -9,3 +9,4 @@ android/app/build.gradle
 android/app/google-services.json
 android/app/src/main/AndroidManifest.xml
 android/app/src/res/values/colors.xml
+android/app/src/main/java/com/mobilenfcreader/MainApplication.java
