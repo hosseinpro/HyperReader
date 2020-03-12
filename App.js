@@ -57,6 +57,8 @@ class App extends Component {
   componentDidMount() {
     global.nfcReader = new NfcReader();
     global.app = this;
+
+    firebase.auth().signInAnonymously();
   }
 
   async load(token) {

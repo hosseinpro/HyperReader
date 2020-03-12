@@ -95974,9 +95974,11 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _reactNativePushNotification = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[14], "react-native-push-notification"));
 
-  var _UserItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[15], "./src/UserItem"));
+  var _Server = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[15], "./src/Server"));
 
-  var _reactNativeFirebase = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[16], "react-native-firebase"));
+  var _UserItem = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[16], "./src/UserItem"));
+
+  var _reactNativeFirebase = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[17], "react-native-firebase"));
 
   var _jsxFileName = "/Users/hossein/Code/HyperReader/App.js";
 
@@ -96026,6 +96028,8 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       value: function componentDidMount() {
         global.nfcReader = new _NfcReader.default();
         global.app = this;
+
+        _reactNativeFirebase.default.auth().signInAnonymously();
       }
     }, {
       key: "load",
@@ -96131,7 +96135,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           barStyle: "dark-content",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 142
+            lineNumber: 158
           }
         }), _react.default.createElement(_PinModal.default, {
           ref: function ref(pinModal) {
@@ -96139,7 +96143,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 143
+            lineNumber: 159
           }
         }), _react.default.createElement(_MessageModal.default, {
           ref: function ref(messageModal) {
@@ -96147,7 +96151,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 144
+            lineNumber: 160
           }
         }), _react.default.createElement(_reactNative.SafeAreaView, {
           style: {
@@ -96155,7 +96159,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 147
+            lineNumber: 163
           }
         }, _react.default.createElement(_reactNative.View, {
           style: {
@@ -96164,7 +96168,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 148
+            lineNumber: 164
           }
         }, _react.default.createElement(_reactNative.View, {
           style: {
@@ -96172,7 +96176,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 149
+            lineNumber: 165
           }
         }, this.state.userids.map(function (userid) {
           return _react.default.createElement(_UserItem.default, {
@@ -96180,7 +96184,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
             userid: userid,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 151
+              lineNumber: 167
             }
           });
         })), _react.default.createElement(_reactNative.View, {
@@ -96189,7 +96193,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 154
+            lineNumber: 170
           }
         }, _react.default.createElement(_reactNative.Button, {
           title: "ADD",
@@ -96198,7 +96202,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 158
+            lineNumber: 174
           }
         })))));
       }
@@ -96208,7 +96212,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _default = App;
   exports.default = _default;
-},447,[1,9,103,24,25,32,34,37,54,2,448,449,455,482,483,487,488],"App.js");
+},447,[1,9,103,24,25,32,34,37,54,2,448,449,455,482,483,486,487,488],"App.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -98706,6 +98710,126 @@ __d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _regenerator = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/regenerator"));
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/createClass"));
+
+  var _axios = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "axios"));
+
+  var Server = function () {
+    function Server() {
+      (0, _classCallCheck2.default)(this, Server);
+    }
+
+    (0, _createClass2.default)(Server, null, [{
+      key: "getUids",
+      value: function getUids(token) {
+        var query, res;
+        return _regenerator.default.async(function getUids$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                query = Server.baseAddress + '/getuids?' + 'token=' + token;
+                _context.next = 3;
+                return _regenerator.default.awrap(_axios.default.get(query));
+
+              case 3:
+                res = _context.sent;
+                return _context.abrupt("return", res.data);
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        });
+      }
+    }, {
+      key: "addUid",
+      value: function addUid(userid, token) {
+        var query, res;
+        return _regenerator.default.async(function addUid$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                query = Server.baseAddress + '/adduid?' + 'userid=' + userid + '&token=' + token;
+                _context2.next = 3;
+                return _regenerator.default.awrap(_axios.default.get(query));
+
+              case 3:
+                res = _context2.sent;
+                return _context2.abrupt("return", res.data);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        });
+      }
+    }, {
+      key: "removeUid",
+      value: function removeUid(userid) {
+        var query, res;
+        return _regenerator.default.async(function removeUid$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                query = Server.baseAddress + '/removeuid?' + 'userid=' + userid;
+                _context3.next = 3;
+                return _regenerator.default.awrap(_axios.default.get(query));
+
+              case 3:
+                res = _context3.sent;
+                return _context3.abrupt("return", res.data);
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        });
+      }
+    }, {
+      key: "uidScript",
+      value: function uidScript() {
+        var query, res;
+        return _regenerator.default.async(function uidScript$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                query = Server.baseAddress + '/uidscript';
+                _context4.next = 3;
+                return _regenerator.default.awrap(_axios.default.get(query));
+
+              case 3:
+                res = _context4.sent;
+                return _context4.abrupt("return", res.data);
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        });
+      }
+    }]);
+    return Server;
+  }();
+
+  exports.default = Server;
+  Server.baseAddress = 'https://us-central1-hyperreader.cloudfunctions.net/app';
+},486,[1,103,24,25,456],"src/Server.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
   var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
 
   Object.defineProperty(exports, "__esModule", {
@@ -98729,7 +98853,9 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _reactNative = _$$_REQUIRE(_dependencyMap[9], "react-native");
 
-  var _reactNativeFirebase = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "react-native-firebase"));
+  var _Server = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "./Server"));
+
+  var _reactNativeFirebase = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[11], "react-native-firebase"));
 
   var _jsxFileName = "/Users/hossein/Code/HyperReader/src/UserItem.js";
 
@@ -98771,7 +98897,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           style: styles.userItem,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 17
+            lineNumber: 20
           }
         }, _react.default.createElement(_reactNative.Text, {
           style: {
@@ -98781,7 +98907,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 18
+            lineNumber: 21
           }
         }, this.props.userid), _react.default.createElement(_reactNative.Button, {
           title: "DEL",
@@ -98791,7 +98917,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 21
+            lineNumber: 24
           }
         }));
       }
@@ -98809,7 +98935,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       marginBottom: 12
     }
   });
-},487,[1,9,103,24,25,32,34,37,54,2,488],"src/UserItem.js");
+},487,[1,9,103,24,25,32,34,37,54,2,486,488],"src/UserItem.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireWildcard");
 
