@@ -57,18 +57,9 @@ export default class PinModal extends Component {
               this.state.onComplete(pin);
             }}
             pinLength={this.state.pinLength}
-            inputViewEmptyStyle={{
-              backgroundColor: 'transparent',
-              borderWidth: 1,
-              borderColor: '#FFF',
-            }}
-            buttonViewStyle={{
-              borderWidth: 1,
-              borderColor: '#FFF',
-            }}
-            buttonTextStyle={{
-              color: '#FFF',
-            }}
+            buttonBgColor={'darkgray'}
+            buttonTextColor={Colors.text}
+            inputBgColor={'gray'}
           />
           <Button
             transparent
