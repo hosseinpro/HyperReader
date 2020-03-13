@@ -8,13 +8,11 @@ import UseridList from './src/components/UseridList';
 import firebase from 'react-native-firebase';
 import TapCardModal from './src/components/TapCardModal';
 import WaitModal from './src/components/WaitModal';
-import runScript from './src/lib/runScript';
 import RemoteRun from './src/components/RemoteRun';
 
 PushNotification.configure({
   onRegister: function(token) {
-    global.token = token.token;
-    global.useridList.load();
+    global.useridList.load(token.token);
   },
 
   onNotification: function(notification) {

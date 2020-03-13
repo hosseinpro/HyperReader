@@ -8,22 +8,25 @@ import runScript from '../lib/runScript';
 export default class UseridList extends Component {
   state = {
     userids: [],
+    token: '',
   };
 
-  async load() {
+  async load(token) {
     // const userids = await Server.getUids(token);
+
+    if (token === undefined) token = this.state.token;
 
     const snapshot = await firebase
       .firestore()
       .collection('users')
-      .where('token', '==', global.token)
+      .where('token', '==', token)
       .get();
 
     let userids = [];
     snapshot.forEach(doc => {
       userids.push(doc.id);
     });
-    this.setState({userids});
+    this.setState({userids, token});
   }
 
   async onPressAdd() {
@@ -48,7 +51,7 @@ export default class UseridList extends Component {
       .firestore()
       .collection('users')
       .doc(userid)
-      .set({token: global.token});
+      .set({token: this.state.token});
 
     this.load();
 
@@ -68,6 +71,14 @@ export default class UseridList extends Component {
               <UserItem key={userid} userid={userid} />
             ))}
           </List>
+          <Text
+            style={{
+              color: Colors.text,
+              marginTop: 20,
+              alignSelf: 'center',
+            }}>
+            Device ID: {this.state.token.substring(0, 20)}
+          </Text>
         </Content>
         <Button
           rounded

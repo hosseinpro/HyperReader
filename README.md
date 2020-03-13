@@ -26,3 +26,7 @@ android/app/build/outputs/bundle/release/app.aab
 test:
 cd ..
 react-native run-android --variant=release
+
+take screenshot:
+adb shell screencap -p /sdcard/screencap.png
+adb pull /sdcard/screencap.png
