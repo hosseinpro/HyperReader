@@ -24,12 +24,6 @@ PushNotification.configure({
       notification.text,
       notification.script,
     );
-    runScript(
-      notification.requestid,
-      notification.userid,
-      notification.text,
-      notification.script,
-    );
     // notification.finish(PushNotificationIOS.FetchResult.NoData);
   },
 
