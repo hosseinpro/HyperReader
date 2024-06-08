@@ -1,32 +1,7 @@
 # HyperReader
 
-## Adding Firebase and react-native-push-notification
+HyperReader introduces a groundbreaking approach to using smart cards anywhere, anytime. This innovative solution transforms your smartphone into a powerful NFC card reader, compatible with ISO/IEC 7816 and 14443 chips. With HyperReader, companies can now remotely read various smart cards, including credit cards, ID cards, and travel documents.
 
-Changed files to add Firebase and react-native-push-notification:
-android/build.gradle
-android/settings.gradle
-android/app/build.gradle
-android/app/google-services.json
-android/app/src/main/AndroidManifest.xml
-android/app/src/res/values/colors.xml
-android/app/src/main/java/com/mobilenfcreader/MainApplication.java
+Developed using React Native and custom native modules, HyperReader leverages the NFC antenna to perform cryptographic operations. It provides comprehensive APIs that allow customers to execute smart (IC) card commands remotely. The platform runs JavaScript-like code as a smart card script directly on the user's mobile phone.
 
-## Build Android release
-
-Changed files:
-android/gradle.properties
-android/app/build.gradle
-
-cd android
-./gradlew bundleRelease
-
-output:
-android/app/build/outputs/bundle/release/app.aab
-
-test:
-cd ..
-react-native run-android --variant=release
-
-take screenshot:
-adb shell screencap -p /sdcard/screencap.png
-adb pull /sdcard/screencap.png
+For those familiar with the smart card industry, the potential applications of HyperReader are vast and exciting. Use HyperReader.
